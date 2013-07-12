@@ -21,9 +21,3 @@ map <C-n> :NERDTreeToggle<CR>
 " Map Ctrl-J to add a line below, Ctrl-K to add a line above
 nnoremap <silent><C-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
 nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
-
-
-" Set autosave on focus lost - Big ups to Jessica Allen's 2013 Fluent talk for
-" this idea
-
-au FocusLost * :wa
