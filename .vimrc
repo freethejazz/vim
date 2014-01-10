@@ -1,6 +1,7 @@
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
+colorscheme Glowfish
 
 " Small tabs
 set tabstop=2
