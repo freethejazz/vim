@@ -1,6 +1,7 @@
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
+colorscheme Glowfish
 
 " Small tabs
 set tabstop=2
@@ -21,3 +22,6 @@ map <C-n> :NERDTreeToggle<CR>
 " Map Ctrl-J to add a line below, Ctrl-K to add a line above
 nnoremap <silent><C-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
 nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+
+" Start searching early
+set incsearch

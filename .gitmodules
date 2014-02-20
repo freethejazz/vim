@@ -10,3 +10,6 @@
 [submodule "bundle/markdown"]
 	path = bundle/markdown
 	url = https://github.com/suan/vim-instant-markdown.git
+[submodule "bundle/pangloss"]
+	path = bundle/pangloss
+	url = https://github.com/pangloss/vim-javascript.git
