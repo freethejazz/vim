@@ -19,12 +19,12 @@ set viminfo='100,<100,s10,h
 " Remap C-n to toggle nerd tree
 map <C-n> :NERDTreeToggle<CR>
 
-" Map C-c to help with delimitMate
-imap <C-c> <CR><Esc>O
-
 " Map Ctrl-J to add a line below, Ctrl-K to add a line above
 nnoremap <silent><C-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
 nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 " Start searching early
 set incsearch
+
+" Expand lines w/ delimitMate
+let delimitMate_expand_cr = 1
