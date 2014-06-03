@@ -28,3 +28,15 @@ set incsearch
 
 " Expand lines w/ delimitMate
 let delimitMate_expand_cr = 1
+
+"remap leader to comma
+let mapleader = ","
+
+"Syntastic
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
+"let g:syntastic_check_on_open=1
+let g:syntastic_javascript_checkers=["jshint"]
+
+map <Leader>j :lnext<CR>
+map <Leader>k :lprev<CR>
