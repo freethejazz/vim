@@ -27,6 +27,10 @@ nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 " Start searching early
 set incsearch
 
+"snipmate
+imap <C-J> <Plug>snipMateNextOrTrigger
+smap <C-J> <Plug>snipMateNextOrTrigger
+
 " Expand lines w/ delimitMate
 let delimitMate_expand_cr = 1
 
