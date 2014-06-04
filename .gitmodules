@@ -4,9 +4,6 @@
 [submodule "bundle/vim-surround"]
 	path = bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "bundle/YCM"]
-	path = bundle/YCM
-	url = https://github.com/Valloric/YouCompleteMe.git
 [submodule "bundle/markdown"]
 	path = bundle/markdown
 	url = https://github.com/suan/vim-instant-markdown.git
@@ -19,9 +16,6 @@
 [submodule "bundle/vim-indent-guids"]
 	path = bundle/vim-indent-guids
 	url = https://github.com/nathanaelkane/vim-indent-guides.git
-[submodule "bundle/tern_for_vim"]
-	path = bundle/tern_for_vim
-	url = https://github.com/marijnh/tern_for_vim.git
 [submodule "bundle/delimitMate"]
 	path = bundle/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
