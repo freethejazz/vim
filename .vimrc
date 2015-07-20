@@ -27,10 +27,6 @@ nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 " Start searching early
 set incsearch
 
-"snipmate
-imap <C-J> <Plug>snipMateNextOrTrigger
-smap <C-J> <Plug>snipMateNextOrTrigger
-
 " Expand lines w/ delimitMate
 let delimitMate_expand_cr = 1
 
@@ -49,3 +45,13 @@ map <Leader>k :lprev<CR>
 
 " pastetoggl
 set pastetoggle=<Leader>v
+
+" ultisnips
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
