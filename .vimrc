@@ -62,3 +62,10 @@ let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_confirm_extra_conf=0
 set completeopt-=preview
 let g:ycm_cache_omnifunc = 0
+
+" Line length for markdown
+au BufEnter *.markdown set tw=72|set fo=cqt|set wm=0
+au BufEnter *.md set tw=72|set fo=cqt|set wm=0
+
+" Sort lines
+:vmap <F5> :sort<CR>
