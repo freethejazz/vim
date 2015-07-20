@@ -45,7 +45,7 @@
 	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
 [submodule "bundle/vim-scala"]
 	path = bundle/vim-scala
-	url = git@github.com:derekwyatt/vim-scala.git
+	url = http://github.com/derekwyatt/vim-scala.git
 [submodule "bundle/puppet-syntax-vim"]
 	path = bundle/puppet-syntax-vim
 	url = https://github.com/puppetlabs/puppet-syntax-vim.git
