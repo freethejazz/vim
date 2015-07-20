@@ -69,3 +69,6 @@ au BufEnter *.md set tw=72|set fo=cqt|set wm=0
 
 " Sort lines
 :vmap <F5> :sort<CR>
+
+" Display tabs and trailing spaces visually
+set list listchars=tab:\ \ ,trail:·
