@@ -3,9 +3,9 @@ call plug#begin('~/.vim/plugged')
 
 " 'UI' features
 Plug 'scrooloose/nerdtree'
-Plug 'kien/ctrlp'
+Plug 'kien/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
-Plug 'tpope/fugitive.vim'
+Plug 'tpope/vim-fugitive'
 
 " Syntax features
 Plug 'tpope/vim-surround'
