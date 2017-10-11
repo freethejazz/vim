@@ -3,7 +3,7 @@ call plug#begin('~/.vim/plugged')
 
 " 'UI' features
 Plug 'scrooloose/nerdtree'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 
@@ -11,15 +11,27 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'Raimondi/delimitMate'
-Plug 'tpope/vim-sleuth'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'hashivim/vim-terraform'
+" Plug 'JamshedVesuna/vim-markdown-preview'
+
+Plug 'editorconfig/editorconfig-vim'
 
 " Language Specific Stuff
+Plug 'vim-syntastic/syntastic'
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'groenewege/vim-less'
 Plug 'moll/vim-node'
 Plug 'puppetlabs/puppet-syntax-vim'
 Plug 'vim-scripts/paredit.vim'
+Plug 'elzr/vim-json'
+Plug 'fatih/vim-go'
+Plug 'maksimr/vim-jsbeautify'
+Plug 'mxw/vim-jsx'
+Plug 'maxbane/vim-asm_ca65'
 
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'tpope/vim-salve', { 'for': 'clojure' }
@@ -30,6 +42,9 @@ Plug 'tpope/vim-dispatch', { 'for': 'clojure' }
 Plug 'Valloric/YouCompleteMe'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+
+" Prose
+Plug 'DamienCassou/textlint'
 
 call plug#end()
 
@@ -71,12 +86,19 @@ let delimitMate_expand_cr = 1
 "remap leader to comma
 let mapleader = ","
 
-"Syntastic
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+
 let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
 let g:syntastic_disabled_filetypes=['html']
-"let g:syntastic_check_on_open=1
-let g:syntastic_javascript_checkers=["jshint"]
 
 map <Leader>j :lnext<CR>
 map <Leader>k :lprev<CR>
@@ -117,4 +139,29 @@ set list listchars=tab:\ \ ,trail:·
 " Custom motion for selecting the entire file
 vnoremap af :<C-U>silent! normal! ggVG<CR>
 omap af :normal Vaf<CR>
+
+" Persistent Undo!
+" Make sure ~/.vim/undo exists
+set undofile
+set undodir=$HOME/.vim/undo
+
+" vim markdown preview
+let vim_markdown_preview_hotkey='<C-m>'
+let vim_markdown_preview_browser='Google Chrome'
+let vim_markdown_preview_github=1
+let vim_markdown_preview_toggle=2
+let vim_markdown_preview_temp_file=1
+
+" JSX
+let g:jsx_ext_required = 0
+
+" Ctrl-p
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|target|node_modules)$',
+  \ 'file': '\v\.(exe|so|dll|jar)$'
+  \ }
+
+augroup filetypedetect
+    au BufNewFile,BufRead *.asm set ft=asm_ca65
+augroup END
 
