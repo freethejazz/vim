@@ -1,4 +1,4 @@
-" vimplug
+b" vimplug
 call plug#begin('~/.vim/plugged')
 
 " 'UI' features
@@ -6,6 +6,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-projectionist'
 
 " Syntax features
 Plug 'tpope/vim-surround'
@@ -14,44 +15,59 @@ Plug 'Raimondi/delimitMate'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'hashivim/vim-terraform'
-" Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'tomlion/vim-solidity'
+Plug 'neo4j-contrib/cypher-vim-syntax'
+Plug 'chrisbra/csv.vim'
+" Plug 'flowtype/vim-flow'
+Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'digitaltoad/vim-pug'
 
 Plug 'editorconfig/editorconfig-vim'
 
 " Language Specific Stuff
-Plug 'vim-syntastic/syntastic'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'jelera/vim-javascript-syntax'
+" Plug 'vim-syntastic/syntastic'
+Plug 'w0rp/ale'
+" Plug 'pangloss/vim-javascript'
+Plug 'yuezk/vim-js'
+" Plug 'mxw/vim-jsx'
+Plug 'MaxMEllon/vim-jsx-pretty'
+" Plug 'jelera/vim-javascript-syntax'
 Plug 'groenewege/vim-less'
 Plug 'moll/vim-node'
 Plug 'puppetlabs/puppet-syntax-vim'
 Plug 'vim-scripts/paredit.vim'
 Plug 'elzr/vim-json'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'maksimr/vim-jsbeautify'
-Plug 'mxw/vim-jsx'
 Plug 'maxbane/vim-asm_ca65'
+Plug 'nvie/vim-flake8'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'tpope/vim-salve', { 'for': 'clojure' }
-Plug 'tpope/vim-projectionist', { 'for': 'clojure' }
 Plug 'tpope/vim-dispatch', { 'for': 'clojure' }
 
+Plug 'psf/black', { 'branch': 'stable' }
+
 " Completion/Snippets
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'zxqfl/tabnine-vim'
 
 " Prose
 Plug 'DamienCassou/textlint'
 
+Plug 'OmniSharp/omnisharp-vim'
+
 call plug#end()
 
-"execute pathogen#infect()
 set t_Co=256
 syntax on
 filetype plugin indent on
+
 colorscheme Darkside
 
 " Small tabs
@@ -74,6 +90,18 @@ map <C-n> :NERDTreeToggle<CR>
 nnoremap <silent><C-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
 nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
+" Map  alt-J and leader-K to move current line up or down
+" See SO post here: https://stackoverflow.com/questions/7501092/can-i-map-alt-key-in-vim
+nnoremap ∆ :m .+1<CR>==
+nnoremap ˚ :m .-2<CR>==
+
+inoremap ∆ <Esc>:m .+1<CR>==gi
+inoremap ˚ <Esc>:m .-2<CR>==gi
+
+vnoremap ∆ :m '>+1<CR>gv=gv
+vnoremap ˚ :m '<-2<CR>gv=gv
+
+
 nnoremap <silent><C-h> :tabprevious<CR>
 nnoremap <silent><C-l> :tabnext<CR>
 
@@ -87,18 +115,22 @@ let delimitMate_expand_cr = 1
 let mapleader = ","
 
 " Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
+let g:ale_sign_error = '>' " Less aggressive than the default '>>'
+let g:ale_sign_warning = '-'
+let g:ale_fixers = {'javascript': ['prettier'], 'typescript': ['prettier'], 'typescriptreact': ['prettier']}
+let g:ale_fix_on_save = 1
+" let g:syntastic_always_populate_loc_list = 0
+" let g:syntastic_auto_loc_list = 0
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_javascript_checkers = ['eslint']
 
-let g:syntastic_enable_signs=1
-let g:syntastic_disabled_filetypes=['html']
+" let g:syntastic_enable_signs=1
+" let g:syntastic_disabled_filetypes=['html']
 
 map <Leader>j :lnext<CR>
 map <Leader>k :lprev<CR>
@@ -147,9 +179,9 @@ set undodir=$HOME/.vim/undo
 
 " vim markdown preview
 let vim_markdown_preview_hotkey='<C-m>'
-let vim_markdown_preview_browser='Google Chrome'
 let vim_markdown_preview_github=1
-let vim_markdown_preview_toggle=2
+let vim_markdown_preview_browser='Google Chrome'
+let vim_markdown_preview_toggle=1
 let vim_markdown_preview_temp_file=1
 
 " JSX
@@ -157,11 +189,67 @@ let g:jsx_ext_required = 0
 
 " Ctrl-p
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|target|node_modules)$',
-  \ 'file': '\v\.(exe|so|dll|jar)$'
+  \ "dir":  "\v[\/](\.(git|hg|svn)|target|node_modules)$",
+  \ "file": "\v\.(exe|so|dll|jar)$"
   \ }
+
+" Projectionist
+
+let g:projectionist_heuristics = {
+  \  "package.json&node_modules/react/": {
+  \    "README.md": { "type": "doc" },
+  \    "src/app/components/*.js": { "type": "component", "template": ["import React, {open} Component {close} from 'react';\n\nexport default () => {open}\n  return <div></div>;\n{close}}"] },
+  \    "src/app/containers/*.js": { "type": "containers" },
+  \    "src/app/reducers/*.js": { "type": "reducer" },
+  \    "src/app/reducers/index.js": { "type": "reducer" }
+  \  }
+  \}
 
 augroup filetypedetect
     au BufNewFile,BufRead *.asm set ft=asm_ca65
 augroup END
 
+augroup filetypedetect
+    au BufNewFile,BufRead *.ashx set ft=cs
+augroup END
+
+" Interpret some config files as json
+augroup filetypedetect
+    au BufNewFile,BufRead .eslintrc,.babelrc set ft=json
+augroup END
+
+" Auto-highlight CSV columns
+let g:csv_highlight_column = 'y'
+
+" for parcel
+set backupcopy=yes
+
+" Allow toggling of autocentering lines of code
+" https://vim.fandom.com/wiki/Keep_your_cursor_centered_vertically_on_the_screen
+
+set scrolloff=10
+if !exists('*VCenterCursor')
+  augroup VCenterCursor
+  au!
+  au OptionSet *,*.*
+    \ if and( expand("<amatch>")=='scrolloff' ,
+    \         exists('#VCenterCursor#WinEnter,WinNew,VimResized') )|
+    \   au! VCenterCursor WinEnter,WinNew,VimResized|
+    \ endif
+  augroup END
+  function VCenterCursor()
+    if !exists('#VCenterCursor#WinEnter,WinNew,VimResized')
+      let s:default_scrolloff=&scrolloff
+      let &scrolloff=winheight(win_getid())/2
+      au VCenterCursor WinEnter,WinNew,VimResized *,*.*
+        \ let &scrolloff=winheight(win_getid())/2
+    else
+      au! VCenterCursor WinEnter,WinNew,VimResized
+      let &scrolloff=s:default_scrolloff
+    endif
+  endfunction
+endif
+
+autocmd BufWritePre *.py execute ':Black'
+
+nnoremap <leader>zz :call VCenterCursor()<CR>

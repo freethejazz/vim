@@ -10,7 +10,7 @@ endif
 
 let g:colors_name = "Darkside"
 
-hi Cursor ctermfg=NONE ctermbg=231 cterm=NONE guifg=NONE guibg=#f8f8f0 gui=NONE
+hi Cursor ctermfg=NONE ctermbg=231 cterm=NONE guifg=NONE guibg=#ccc gui=NONE
 hi Visual ctermfg=NONE ctermbg=16 cterm=NONE guifg=NONE guibg=#161a1f gui=NONE
 hi CursorLine ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#313233 gui=NONE
 hi CursorColumn ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#313233 gui=NONE
@@ -35,7 +35,10 @@ hi Conditional ctermfg=208 ctermbg=NONE cterm=NONE guifg=#f08d24 guibg=NONE gui=
 hi Constant ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi Define ctermfg=208 ctermbg=NONE cterm=NONE guifg=#f08d24 guibg=NONE gui=NONE
 hi ErrorMsg ctermfg=231 ctermbg=38 cterm=NONE guifg=#f8f8f0 guibg=#00a8c6 gui=NONE
+hi Error ctermfg=NONE ctermbg=52 cterm=NONE guifg=#f8f8f0 guibg=#00a8c6 gui=NONE
+hi SpellBad ctermfg=NONE ctermbg=52 cterm=NONE guifg=#f8f8f0 guibg=#00a8c6 gui=NONE
 hi WarningMsg ctermfg=231 ctermbg=38 cterm=NONE guifg=#f8f8f0 guibg=#00a8c6 gui=NONE
+hi Warning ctermfg=231 ctermbg=88 cterm=NONE guifg=#f8f8f0 guibg=#00a8c6 gui=NONE
 hi Float ctermfg=98 ctermbg=NONE cterm=NONE guifg=#8e69c9 guibg=NONE gui=NONE
 hi Function ctermfg=71 ctermbg=NONE cterm=NONE guifg=#68c244 guibg=NONE gui=NONE
 hi Identifier ctermfg=38 ctermbg=NONE cterm=NONE guifg=#1cc3e8 guibg=NONE gui=italic
@@ -52,7 +55,7 @@ hi StorageClass ctermfg=38 ctermbg=NONE cterm=NONE guifg=#1cc3e8 guibg=NONE gui=
 hi String ctermfg=220 ctermbg=NONE cterm=NONE guifg=#f2d42c guibg=NONE gui=NONE
 hi Tag ctermfg=166 ctermbg=NONE cterm=NONE guifg=#e8341c guibg=NONE gui=NONE
 hi Title ctermfg=250 ctermbg=NONE cterm=bold guifg=#bababa guibg=NONE gui=bold
-hi Todo ctermfg=59 ctermbg=NONE cterm=inverse,bold guifg=#494b4d guibg=NONE gui=inverse,bold
+hi Todo ctermfg=59 ctermbg=NONE cterm=inverse,bold,underline guifg=#494b4d guibg=NONE gui=inverse,bold
 hi Type ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi Underlined ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline
 hi rubyClass ctermfg=208 ctermbg=NONE cterm=NONE guifg=#f08d24 guibg=NONE gui=NONE
